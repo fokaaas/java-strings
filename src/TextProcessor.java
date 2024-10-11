@@ -22,7 +22,7 @@ public class TextProcessor {
                 return word;
             }
         }
-        return null;
+        throw new RuntimeException("No unique word found");
     }
 
     private ArrayList<StringBuffer> split (StringBuffer text, char[] delimiters) {
