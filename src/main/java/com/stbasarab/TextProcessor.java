@@ -1,3 +1,5 @@
+package com.stbasarab;
+
 import java.util.ArrayList;
 
 public class TextProcessor {
