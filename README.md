@@ -12,6 +12,4 @@ Firstly, clone this repo:
 git clone git@github.com:fokaaas/java-strings.git
 ```
 
-Using any IDE import this project as a Maven project.
-
-Then, run the Main class.
+Using IntelliJ IDEA run the Main class.
