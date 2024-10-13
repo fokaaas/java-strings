@@ -9,9 +9,9 @@ public class TextProcessor {
         this.text = text;
     }
 
-    public StringBuffer findUniqueWord () {
-        char[] sentenceDelimiters = {'.', '!', '?'};
-        char[] wordDelimiters = {' ', ',', ':'};
+    public StringBuffer findUniqueWord() {
+        StringBuffer[] sentenceDelimiters = {new StringBuffer("."), new StringBuffer("!"), new StringBuffer("?")};
+        StringBuffer[] wordDelimiters = {new StringBuffer(" "), new StringBuffer(","), new StringBuffer(":")};
         ArrayList<StringBuffer> sentences = split(text, sentenceDelimiters);
         ArrayList<StringBuffer> firstSentenceWords = split(sentences.getFirst(), wordDelimiters);
         ArrayList<StringBuffer> otherSentenceWords = new ArrayList<>();
@@ -27,7 +27,7 @@ public class TextProcessor {
         throw new RuntimeException("No unique word found");
     }
 
-    private ArrayList<StringBuffer> split (StringBuffer text, char[] delimiters) {
+    private ArrayList<StringBuffer> split(StringBuffer text, StringBuffer[] delimiters) {
         ArrayList<StringBuffer> parts = new ArrayList<>();
         int start = 0;
         for (int i = 0; i < text.length(); i++) {
@@ -44,9 +44,9 @@ public class TextProcessor {
         return parts;
     }
 
-    private boolean isDelimiter(char c, char[] delimiters) {
-        for (char delimiter : delimiters) {
-            if (c == delimiter) return true;
+    private boolean isDelimiter(char c, StringBuffer[] delimiters) {
+        for (StringBuffer delimiter : delimiters) {
+            if (delimiter.length() == 1 && c == delimiter.charAt(0)) return true;
         }
         return false;
     }
