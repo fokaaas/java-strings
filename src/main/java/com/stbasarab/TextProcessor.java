@@ -11,8 +11,12 @@ public class TextProcessor {
 
     public StringBuffer findUniqueWord() {
         StringBuffer[] sentenceDelimiters = {new StringBuffer("."), new StringBuffer("!"), new StringBuffer("?")};
-        StringBuffer[] wordDelimiters = {new StringBuffer(" "), new StringBuffer(","), new StringBuffer(":")};
         ArrayList<StringBuffer> sentences = split(text, sentenceDelimiters);
+
+        if (sentences.isEmpty()) throw new RuntimeException("There are no sentences in the text.");
+        if (sentences.size() == 1) throw new RuntimeException("There are no other sentences to compare.");
+
+        StringBuffer[] wordDelimiters = {new StringBuffer(" "), new StringBuffer(","), new StringBuffer(":")};
         ArrayList<StringBuffer> firstSentenceWords = split(sentences.getFirst(), wordDelimiters);
         ArrayList<StringBuffer> otherSentenceWords = new ArrayList<>();
         for (int i = 1; i < sentences.size(); i++) {
